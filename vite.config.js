@@ -2,10 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-const REPO = 'lebana-ecommerce';
-
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? `/${REPO}/` : '/',
+  base: '/lebana-ecommerce/',
   plugins: [react()],
   resolve: {
     alias: {
