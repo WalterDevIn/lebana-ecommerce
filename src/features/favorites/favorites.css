@@ -1,0 +1,161 @@
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.favorites-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 1000px;  /* 🔹 ancho máximo fijo */
+  padding: 0 1rem;    /* 🔹 un poquito de padding lateral */
+}
+
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 65%;
+  background-color: #fff;
+  border-radius: 8px;
+  gap: 12px;
+}
+
+/* (Opcionales, por si usás ítems propios en esta vista) */
+.favorites-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.favorites-img img {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.favorites-details {
+  flex: 1;
+  padding-left: 0.5rem;
+}
+
+.favorites-details strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.favorites-details p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Controles/acciones que ya tenías (no dependen del prefijo cart) */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.qty-controls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.qty-controls button:hover {
+  border-color: #3483fa;
+  color: #3483fa;
+}
+
+.actions {
+  margin-top: 0.5rem;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  color: #3483fa;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+.actions button:hover {
+  text-decoration: underline;
+}
+
+.actions .add-to-cart-button {
+  background-color: #3483fa;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.actions .add-to-cart-button:hover {
+  background-color: #2968c8;
+  text-decoration: none;
+}
+
+.favorites-empty {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+}
+
+/* (Si querés conservar la cajita de cantidad estilo “box”) */
+.favorites-qty-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+/* Variante más marcada de qty-controls */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.qty-controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  border-radius: 4px;
+}
+
+.qty-controls span {
+  width: 30px;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+
+.qty-controls button:hover {
+  background-color: #e6f0ff;
+  color: #3483fa;
+  border: 1px solid #3483fa;
+}

@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.user-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+/* Parte izquierda */
+.user-left {
+  flex: 1;
+  width: 40%;
+  background: url("../public/assets/productos/fondo-inicio-sesion.png");
+  background-size: 100% auto; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem;
+}
+
+.user-left .text{
+    text-align: left;
+}
+
+.user-left .text h1 {
+  font-size: 2.5rem;
+  font-weight: 100;
+  width: max-content;
+  margin-bottom: 1rem;
+}
+
+.user-left .text h2 {
+  font-size: 2.8rem;
+  width: max-content;
+  font-weight: 600;
+}
+
+/* Parte derecha */
+.user-right {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #fff;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-card input {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.login-btn, .google-btn, .register-btn {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.login-btn {
+  background: linear-gradient(to right, #140055, #93018e);
+  color: white;
+}
+
+.google-btn {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.register-btn {
+  background: linear-gradient(to right, #140055, #93018e);
+  color: white;
+}
+
+.toggle-link {
+  color: #6a00f4;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.terms {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Celular */
+@media (max-width: 768px) {
+  .user-container {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .user-left {
+    width: 100%;
+    height: 250px;
+    order: 1;
+    padding-top: 6rem;
+    justify-content: start;
+  }
+
+  .user-left .text{
+    text-align: center;
+    }
+
+  .user-right {
+    width: 100%;
+    position: absolute;
+    background-color: transparent;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 10;
+  }
+
+  .form-card {
+    width: 90%;
+    max-width: 400px;
+    padding: 1.5rem;
+  }
+
+  .user-left h1 {
+    font-size: 2rem;
+  }
+
+  .user-left h2 {
+    font-size: 2.3rem;
+  }
+}
