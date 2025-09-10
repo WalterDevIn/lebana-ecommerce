@@ -34,7 +34,7 @@ function Cart() {
     }
 
     function handleEffect() {
-        fetch("/fakeProducts.json")
+        fetch("/lebana-ecommerce/fakeProducts.json")
             .then(response => response.json())
             .then(handleCart)
             .catch(console.error);

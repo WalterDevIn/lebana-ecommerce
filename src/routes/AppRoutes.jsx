@@ -9,7 +9,7 @@ import Favorites from '../features/favorites/Favorites';
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/lebana-ecommerce'>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

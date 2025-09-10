@@ -15,7 +15,7 @@ function Products() {
     const [products, setProducts] = useState([]);
 
     function handleEffect() {
-        fetch("/fakeProducts.json")
+        fetch("/lebana-ecommerce/fakeProducts.json")
             .then(response => response.json())
             .then(setProducts)
             .catch(console.error);

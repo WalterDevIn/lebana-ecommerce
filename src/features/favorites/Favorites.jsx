@@ -13,7 +13,7 @@ const Favorites = () => {
   }
 
   function handleEffect() {
-    fetch("/fakeProducts.json")
+    fetch("/lebana-ecommerce/fakeProducts.json")
       .then(response => response.json())
       .then(handleFavorites)
       .catch(console.error);
