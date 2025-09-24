@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Campera de Jean Azul claro",
+    "price": 30000,
+    "description": "Es una campera de Jean con botones y en todos los talles",
+    "image": "./assets/productos/ropa1.webp",
+    "stock": 3
+  },
+  {
+    "id": 2,
+    "title": "Campera de Jean Azul oscuro",
+    "price": 32000,
+    "description": "Campera de Jean azul oscuro, ideal para días frescos. Disponible en todos los talles",
+    "image": "./assets/productos/ropa2.webp",
+    "stock": 10
+  },
+  {
+    "id": 3,
+    "title": "Conjunto Deportivo Negro",
+    "price": 40000,
+    "description": "Conjunto deportivo negro, cómodo y moderno. Disponible en todas las tallas",
+    "image": "./assets/productos/ropa3.webp",
+    "stock": 8
+  },
+  {
+    "id": 4,
+    "title": "Conjunto Deportivo Gris",
+    "price": 40000,
+    "description": "Conjunto deportivo gris claro, ideal para entrenar o vestir cómodo",
+    "image": "./assets/productos/ropa4.webp",
+    "stock": 6
+  },
+  {
+    "id": 5,
+    "title": "Campera Negra Abrigada",
+    "price": 45000,
+    "description": "Campera negra abrigada, perfecta para el invierno. Todos los talles disponibles",
+    "image": "./assets/productos/ropa5.webp",
+    "stock": 12
+  },
+  {
+    "id": 6,
+    "title": "Campera Abrigada Beige",
+    "price": 45000,
+    "description": "Campera abrigada color beige, suave por dentro y resistente al frío",
+    "image": "./assets/productos/ropa6.webp",
+    "stock": 13
+  },
+  {
+    "id": 7,
+    "title": "Conjunto Deportivo Negro con Remera Holgada",
+    "price": 42000,
+    "description": "Conjunto deportivo negro con remera holgada. Estilo urbano y cómodo",
+    "image": "./assets/productos/ropa7.webp",
+    "stock": 10
+  },
+  {
+    "id": 8,
+    "title": "Campera Abrigada Beige Larga",
+    "price": 48000,
+    "description": "Campera larga abrigada color beige. Excelente opción para el frío intenso",
+    "image": "./assets/productos/ropa8.webp",
+    "stock": 11
+  },
+  {
+    "id": 9,
+    "title": "Remera Beige",
+    "price": 20000,
+    "description": "Remera básica color beige, ideal para cualquier ocasión",
+    "image": "./assets/productos/ropa9.webp",
+    "stock": 11
+  },
+  {
+    "id": 10,
+    "title": "Remera Beige de Costado",
+    "price": 20000,
+    "description": "Remera beige vista de costado. Estilo casual y versátil",
+    "image": "./assets/productos/ropa10.webp",
+    "stock": 10
+  }
+]

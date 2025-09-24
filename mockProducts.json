@@ -1,0 +1,52 @@
+[
+  {
+    "productoid": 101,
+    "descripcion": "Kit Térmico Alpina Frío Extremo + Guantes + Cuello",
+    "precio": 23639,
+    "enPromocion": true,
+    "precioAnterior": 29358,
+    "imagen_url": "",
+    "colores": ["Negro"],
+    "talles": ["S", "M", "L", "XL"]
+  },
+  {
+    "productoid": 102,
+    "descripcion": "Abrigo Buzo Perro Tigger (Mascotas)",
+    "precio": 20900,
+    "enPromocion": false,
+    "precioAnterior": null,
+    "imagen_url": "",
+    "colores": ["Naranja", "Negro"],
+    "talles": ["XS", "S", "M"]
+  },
+  {
+    "productoid": 103,
+    "descripcion": "Pack x3 Bombachas Cola Less (Plus)",
+    "precio": 25800,
+    "enPromocion": true,
+    "precioAnterior": 86000,
+    "imagen_url": "",
+    "colores": ["Negro", "Blanco", "Nude"],
+    "talles": ["XS", "S", "M", "L"]
+  },
+  {
+    "productoid": 104,
+    "descripcion": "Máscara Pasamontañas Lycra Cuello Térmico",
+    "precio": 9223,
+    "enPromocion": true,
+    "precioAnterior": 10980,
+    "imagen_url": "",
+    "colores": ["Negro"],
+    "talles": ["Único"]
+  },
+  {
+    "productoid": 105,
+    "descripcion": "Conjunto Jogging + Buzo Hombre (S al XL)",
+    "precio": 34999,
+    "enPromocion": false,
+    "precioAnterior": null,
+    "imagen_url": "",
+    "colores": ["Negro", "Gris"],
+    "talles": ["S", "M", "L", "XL"]
+  }
+]
