@@ -121,34 +121,52 @@
   margin-bottom: 1rem;
 }
 
+.general-container {
+  display: none;
+}
+
 /* Celular */
 @media (max-width: 768px) {
+  .general-container {
+    display: flow-root;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #0A005A, #270069);
+;
+  }
   .user-container {
     flex-direction: column;
     position: relative;
+    background: url("/lebana-ecommerce/assets/productos/fondo-inicio-sesion.png");
+    background-size: 100% auto; 
+    background-repeat: no-repeat; 
+    background-position: start; 
   }
 
   .user-left {
+    position: static;
+    background: transparent;
     width: 100%;
-    height: 250px;
-    order: 1;
-    padding-top: 6rem;
+    height: auto;
+    padding: 3rem 6rem 24px 6rem;
     justify-content: start;
   }
 
   .user-left .text{
     text-align: center;
-    }
+  }
 
   .user-right {
     width: 100%;
-    position: absolute;
     background-color: transparent;
+    position: static;
     bottom: 0;
     display: flex;
     justify-content: center;
     padding: 1rem;
+    padding-bottom: 2rem;
     z-index: 10;
+    font-size: 0.8em;
   }
 
   .form-card {
@@ -163,5 +181,27 @@
 
   .user-left h2 {
     font-size: 2.3rem;
+  }
+
+  .options {
+    font-size: 0.8rem;
+  }
+
+  .options a {
+    text-align: right;
+  }
+
+  .options label {
+    display: flex;
+    gap: 1ch;
+    align-items: center;
+  }
+
+  .options label input {
+    margin: 0;
+  }
+
+  .terms input {
+    margin: 0;
   }
 }
