@@ -122,15 +122,13 @@
 }
 
 .general-container {
-  display: none;
+  height: 100%;
+  width: 100%;
 }
 
 /* Celular */
 @media (max-width: 768px) {
   .general-container {
-    display: flow-root;
-    height: 100%;
-    width: 100%;
     background: linear-gradient(to right, #0A005A, #270069);
 ;
   }
