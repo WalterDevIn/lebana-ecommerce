@@ -6,6 +6,11 @@ function NavMobile({ open, close }) {
     return (
         <nav className={`nav-mobile ${open ? "open" : ""}`}>
             <div className="nav-mobile-section">
+                <Link to="/" className="nav-logo" onClick={close}>
+                Inicio
+                </Link>
+            </div>
+            <div className="nav-mobile-section">
                 <span className="nav-mobile-title">Comprar</span>
                 <Link to="/productos" onClick={close}>Productos</Link>
                 <Link to="/accesorios" onClick={close}>Accesorios</Link>
