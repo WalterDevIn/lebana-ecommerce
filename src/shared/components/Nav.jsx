@@ -56,7 +56,7 @@ export default function Nav() {
         </div>
       </div>
 
-      <NavMobile/>
+      <NavMobile open={open} close={close}/>
     </header>
   );
 }

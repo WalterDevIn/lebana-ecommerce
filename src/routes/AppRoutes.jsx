@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from '../features/home/Home';
 import Products from '../features/products/Products';
 import User from '../features/user/User';
@@ -9,7 +9,7 @@ import Favorites from '../features/favorites/Favorites';
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter basename='/lebana-ecommerce'>
+    <HashRouter>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ const AppRoutes = () => {
         <Route path="/favoritos" element={<Favorites/>}/>
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

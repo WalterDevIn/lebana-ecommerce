@@ -202,3 +202,10 @@ body {
   color: #3483fa;
   border: 1px solid #3483fa;
 }
+
+@media (max-width: 768px){
+  .cart-wrapper {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+}

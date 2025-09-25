@@ -144,6 +144,17 @@
   .product-card img{ width: 120px; height: 120px; }
   .product-card-body h4{ font-size: .95rem; }
   .product-card-body p{ font-size: 1.1rem; }
+  .product-card-body {
+    justify-content: start !important;
+  }
+  .fav-btn {
+    width: 24px;
+    height: 24px;
+  }
+  .delete-btn {
+    width: 24px !important;
+  }
+  .fav-btn:hover { transform: none; }
 }
 
 .cart-list .product-card-body {

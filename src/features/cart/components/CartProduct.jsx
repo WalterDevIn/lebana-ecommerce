@@ -69,8 +69,8 @@ function CartProduct({ product, reload }) {
       <img src={product.image} alt={product.title} />
       <div className="product-card-body">
         <div className="data">
-        <h4>{product.title}</h4>
-        <p>$ {product.price}</p>
+          <h4>{product.title}</h4>
+          <p>$ {product.price}</p>
         </div>
         <div className="total"><p>Total: $ {product.price * quantity}</p></div>
       </div>

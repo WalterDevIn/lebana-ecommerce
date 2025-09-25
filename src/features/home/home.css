@@ -210,3 +210,19 @@ html {
   overflow-x: hidden;
   background-color: white;
 }
+
+@media (max-width: 768px){
+  .slider-container {
+    top: 0;
+    height: 40vh;
+    background-position: center;
+    
+  }
+  .slider-content {
+    height: 80%;
+    margin-bottom: 20%;
+  }
+  .slider-container img {
+    height: 100%;
+  }
+}

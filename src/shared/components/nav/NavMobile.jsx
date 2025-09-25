@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../nav.css";
 
-function NavMobile({ open }) {
+function NavMobile({ open, close }) {
     return (
         <nav className={`nav-mobile ${open ? "open" : ""}`}>
             <div className="nav-mobile-section">
@@ -13,7 +13,6 @@ function NavMobile({ open }) {
             </div>
             <div className="nav-mobile-section">
                 <span className="nav-mobile-title">Información</span>
-                <Link to="/favoritos" onClick={close}>Favoritos</Link>
                 <Link to="/guia-de-talles" onClick={close}>Guía de talles</Link>
                 <Link to="/blog" onClick={close}>Blog</Link>
             </div>
