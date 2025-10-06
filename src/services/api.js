@@ -1,12 +1,26 @@
-const API_URL = 'http://localhost:4000/api'; 
+const API = 'http://localhost:4000/api'; 
 
-export const getProducts = async () => {
-  try { 
-    const response = await fetch(`${API_URL}/products`);
-    if (!response.ok) throw new Error('Error al obtener productos');
+// src/api/products.js
+// Revisar: http://localhost:3000/productos
+// Revisar: http://localhost:3000/productos?title=campera&minPrice=10000
+
+class Products {
+  route = "products";
+
+  async getAll(filter = {}) {
+    const query = new URLSearchParams(filter).toString();
+    const url = `${API}/${route}${query ? "?" + query : ""}`;
+    const response = await fetch(url);
+
+    if (!response.ok)
+      throw new Error(`Error HTTP ${response.status}`);
+
     return await response.json();
-  } catch (error) {
-    console.error('Error en getProducts:', error);
-    throw error;
   }
-};
+}
+
+const API_URL = API;
+const products = new Products();
+
+export default { API_URL, products };
+

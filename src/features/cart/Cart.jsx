@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import CartProduct from "./components/CartProduct";
 import { storage, CART } from "../../shared/utils/storage";
+import { URL_API } from "../../services/api"; 
 
 import "./cart.css";
 
@@ -21,20 +22,10 @@ function Cart() {
         setProducts(cart.map(({ id: index, quantity }) => ({...data.find(({id}) => index == id), quantity})));
     }
 
-    function handleDelete() {
 
-    }
-
-    function handleQuantity() {
-        
-    }
-
-    function handleChange() {
-
-    }
 
     function handleEffect() {
-        fetch("/lebana-ecommerce/fakeProducts.json")
+        fetch(API_URL + "/products")
             .then(response => response.json())
             .then(handleCart)
             .catch(console.error);

@@ -1,45 +1,47 @@
 import React, { useState, useEffect } from "react";
-
 import "./products.css";
 
 import Filter from "./components/Filter";
 import Product from "../../shared/components/Product";
-
-/*
-    Todo
-    - Filters
-    - Pagination
-*/
+import { products } from "../../services/api";
+import ProductsList from "./components/ProductList";
 
 function Products() {
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    function handleEffect() {
-        fetch("/lebana-ecommerce/fakeProducts.json")
-            .then(response => response.json())
-            .then(setProducts)
-            .catch(console.error);
+  async function load() {
+    try {
+      setLoading(true);
+      const data = await products.getAll();
+      setProducts(data);
+    } catch (err) {
+      setError("No se pudieron cargar los productos");
+    } finally {
+      setLoading(false);
     }
+  }
 
-    useEffect(handleEffect, []);
+  useEffect(() => {
+    load();
+  }, []);
 
-    const loadProducts = product => <Product key={product.id} product={product} reload={() => {}} /> 
-
-    return (
-        <div className="products-wrapper">
-            <div className="products-layout">
-                <Filter/>
-
-                <main className="products-main">
-                    <div className="products-grid">
-                        {products.map(loadProducts)}
-                    </div>
-
-                    {/* <div className="pagination"></div> */}
-                </main>
-            </div>
-        </div>
-    );
+  return (
+    <div className="products-wrapper">
+      <div className="products-layout">
+        <Filter onFilter={load} />
+        <main className="products-main">
+          <ProductsList
+            products={products}
+            loading={loading}
+            error={error}
+            reload={load}
+          />
+        </main>
+      </div>
+    </div>
+  );
 }
 
 export default Products;

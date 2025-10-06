@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { storage, FAVORITES } from "../../shared/utils/storage";
 import Product from "../../shared/components/Product";
+import { API_URL } from "../../services/api"
 
 import "./favorites.css";
 
@@ -13,7 +14,7 @@ const Favorites = () => {
   }
 
   function handleEffect() {
-    fetch("/lebana-ecommerce/fakeProducts.json")
+    fetch(API_URL + "/products")
       .then(response => response.json())
       .then(handleFavorites)
       .catch(console.error);
@@ -22,7 +23,7 @@ const Favorites = () => {
   useEffect(handleEffect, []);
 
   const loadFavorites = item => (
-    <Product key={item.id} product={item} reload={handleEffect}/>
+    <Product key={item.id} product={item} reload={handleEffect} />
   );
 
   if (favorites.length === 0)
