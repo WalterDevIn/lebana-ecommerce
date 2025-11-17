@@ -22,5 +22,5 @@ class Products {
 const API_URL = API;
 const products = new Products();
 
-export default { API_URL, products };
+export { API_URL, products };
 

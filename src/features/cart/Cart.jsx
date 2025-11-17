@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import CartProduct from "./components/CartProduct";
 import { storage, CART } from "../../shared/utils/storage";
-import { URL_API } from "../../services/api"; 
+import { API_URL } from "../../services/api"; 
 
 import "./cart.css";
 
