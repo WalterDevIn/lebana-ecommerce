@@ -2,16 +2,16 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useRef } from "react";
 import "../home.css";
 
-import img1 from "../../../../public/assets/productos/ropa1.webp";
-import img2 from "../../../../public/assets/productos/ropa2.webp";
-import img3 from "../../../../public/assets/productos/ropa3.webp";
-import img4 from "../../../../public/assets/productos/ropa4.webp";
-import img5 from "../../../../public/assets/productos/ropa5.webp";
-import img6 from "../../../../public/assets/productos/ropa6.webp";
-import img7 from "../../../../public/assets/productos/ropa7.webp";
-import img8 from "../../../../public/assets/productos/ropa8.webp";
-import img9 from "../../../../public/assets/productos/ropa9.webp";
-import img10 from "../../../../public/assets/productos/ropa10.webp";
+import img1 from "../../../assets/productos/ropa1.webp";
+import img2 from "../../../assets/productos/ropa2.webp";
+import img3 from "../../../assets/productos/ropa3.webp";
+import img4 from "../../../assets/productos/ropa4.webp";
+import img5 from "../../../assets/productos/ropa5.webp";
+import img6 from "../../../assets/productos/ropa6.webp";
+import img7 from "../../../assets/productos/ropa7.webp";
+import img8 from "../../../assets/productos/ropa8.webp";
+import img9 from "../../../assets/productos/ropa9.webp";
+import img10 from "../../../assets/productos/ropa10.webp";
 
 const productos = [
   { imagen: img1 },

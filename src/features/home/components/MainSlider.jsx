@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import banner1 from "../../../../public/assets/banners/bannerUno.png";
-import banner2 from "../../../../public/assets/banners/D_NQ_732392-MLA87179087330_072025-OO.webp";
-import banner3 from "../../../../public/assets/banners/D_NQ_918321-MLA87171246342_072025-OO.webp";
+import banner1 from "../../../assets/banners/bannerUno.png";
+import banner2 from "../../../assets/banners/D_NQ_732392-MLA87179087330_072025-OO.webp";
+import banner3 from "../../../assets/banners/D_NQ_918321-MLA87171246342_072025-OO.webp";
 import "../home.css";
 
 export default function MainSlider() {

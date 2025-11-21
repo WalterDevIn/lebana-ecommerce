@@ -1,3 +1,4 @@
+/*
 const BASE_URI = "http://localhost:4000/api";
 
 function setToken(token) {
@@ -112,3 +113,8 @@ const auth = {
 };
 
 export { products, auth };
+*/
+
+export const products = {};
+export const API_URL = "";
+
