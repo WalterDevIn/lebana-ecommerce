@@ -12,15 +12,23 @@ function Products() {
   const [error, setError] = useState(null);
 
   async function load() {
+
     try {
+
       setLoading(true);
       const data = await products.getAll();
       setProducts(data);
+
     } catch (err) {
+
       setError("No se pudieron cargar los productos");
+
     } finally {
+
       setLoading(false);
+
     }
+    
   }
 
   useEffect(() => {

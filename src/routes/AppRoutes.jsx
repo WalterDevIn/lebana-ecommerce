@@ -1,10 +1,11 @@
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+
 import Home from '../features/home/Home';
 import Products from '../features/products/Products';
 import User from '../features/user/User';
 import Nav from '../shared/components/Nav';
 import Footer from '../shared/components/Footer';
-import Cart from '../features/cart/Cart'; 
+import Cart from '../features/cart/Cart';
 import Favorites from '../features/favorites/Favorites';
 
 function AppContent() {
