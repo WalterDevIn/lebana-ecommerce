@@ -7,6 +7,7 @@ import Nav from '../shared/components/Nav';
 import Footer from '../shared/components/Footer';
 import Cart from '../features/cart/Cart';
 import Favorites from '../features/favorites/Favorites';
+import Admin from "../features/admin/Admin";
 
 function AppContent() {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ function AppContent() {
         <Route path="/user" element={<User />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favoritos" element={<Favorites />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       {!hideFooter && <Footer />}
     </>
