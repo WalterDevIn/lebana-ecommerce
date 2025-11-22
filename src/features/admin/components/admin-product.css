@@ -6,7 +6,6 @@
 }
 
 .admin-product-card {
-    width: 240px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -18,13 +17,14 @@
 
 /* Imagen del producto */
 .admin-product-image {
-    width: 240px;
+    width: calc(100% + 40px);
     height: 200px;
     margin: -20px;
     margin-bottom: 0;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid #000000;
+    display: block;
 }
 
 /* Contenedor de texto */
