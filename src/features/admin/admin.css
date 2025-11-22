@@ -1,0 +1,45 @@
+* {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.admin-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 36px;
+}
+
+@media (max-width: 768px) {
+    .admin-wrapper {
+      padding: 0 16px;
+    }
+    .product-list {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .product-image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 120px;
+    }
+}

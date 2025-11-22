@@ -1,0 +1,30 @@
+.admin-search-input {
+    padding: 10px 15px 10px 38px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 550px;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #666;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .admin-search-input{
+        width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-search-input{
+        width: 50px;
+    }
+}

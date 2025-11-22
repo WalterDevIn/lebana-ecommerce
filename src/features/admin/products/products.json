@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Remera Nike",
+    "price": 25000,
+    "stock": 12,
+    "image": "ropa1.webp",
+    "description": "Remera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva originalRemera deportiva original"
+  },
+  {
+    "id": 2,
+    "title": "Buzo Oversize",
+    "price": 38000,
+    "stock": 5,
+    "image": "ropa2.webp",
+    "description": "Tamaño amplio unisex"
+  }
+]
