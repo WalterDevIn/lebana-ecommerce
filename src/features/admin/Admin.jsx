@@ -113,7 +113,7 @@ export default function Admin() {
 
             <div className="admin-header">
                 <Search value={query} onChange={setQuery} />
-                <button className="add-btn" onClick={handleAdd}>
+                <button className="admin-add-btn" onClick={handleAdd}>
                     + Agregar producto
                 </button>
             </div>

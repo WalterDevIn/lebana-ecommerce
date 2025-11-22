@@ -23,8 +23,8 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
     .admin-search-input{
-        width: 50px;
+        width: 200px;
     }
 }

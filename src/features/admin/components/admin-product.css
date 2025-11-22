@@ -103,12 +103,7 @@
     background-color: #202020;
 }
 
-
-@media (max-width: 768px) {
-    
-}
-
-@media (max-width: 580px) {
+@media (max-width: 480px) {
     .admin-product-card{
         width: 100%;
         flex-direction: row;

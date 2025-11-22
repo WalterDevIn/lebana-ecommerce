@@ -50,7 +50,7 @@ export default function ProductModal({ isOpen, onClose, onSave, initialData }) {
                         />
                     </div>
 
-                    <div style={{display: "flex", justifyContent: "space-between"}}>
+                    <div className="modal-content-input-row">
                         <div className="modal-content-input">
                             <label>Precio ($)</label>
                             <input
