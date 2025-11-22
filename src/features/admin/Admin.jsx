@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import AdminProduct from "./components/AdminProduct";
-import Search from "./components/Search";
 import { API_URL } from "../../services/api";
 
+import AdminProduct from "./components/AdminProduct";
+import Search from "./components/Search";
 import productsData from "./products/products.json";
+import ProductModal from "./components/ProductModal";
+
 import "./admin.css";
 
 export default function Admin() {
     const [products, setProducts] = useState([]);
     const [query, setQuery] = useState("");
-
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [editingProduct, setEditingProduct] = useState(null);
 
     // Obtener productos desde el servidor
     /* async function fetchProducts() {
@@ -25,16 +28,14 @@ export default function Admin() {
 
     // Crear un producto vacío (ej: abrir modal de creación)
     function handleAdd() {
-        const newProduct = {
-            title: "Nuevo producto",
+        setEditingProduct({
+            id: null,
+            title: "",
             price: 0,
-            image: "",
             stock: 0,
             description: "",
-        };
-
-        //JSON
-        setProducts([...products, newProduct]);
+        });
+        setModalOpen(true);
 
         // Crear POST (BD)
         /*fetch(`${API_URL}/products`, {
@@ -81,6 +82,32 @@ export default function Admin() {
         setProducts(productsData);
     }, []);
 
+    function openEdit(product) {
+        setEditingProduct(product);
+        setModalOpen(true);
+    }
+
+    function saveProduct(product) {
+        // CREAR
+        if (product.id === null) {
+            const newProduct = {
+                ...product,
+                id: Date.now(),  // generar uno nuevo
+            };
+            setProducts([...products, newProduct]);
+            return;
+        }
+
+        // EDITAR
+        setProducts(products.map(p => p.id === product.id ? product : p));
+    }
+
+    function closeModal() {
+        setModalOpen(false);
+        setEditingProduct(null);
+    }
+
+
     return (
         <div className="admin-wrapper">
 
@@ -96,11 +123,18 @@ export default function Admin() {
                     <AdminProduct
                         key={product.id}
                         product={product}
-                        onUpdate={handleUpdate}
+                        onUpdate={() => openEdit(product)}
                         onDelete={() => handleDelete(product.id)}
                     />
                 ))}
             </div>
+
+            <ProductModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                onSave={saveProduct}
+                initialData={editingProduct}
+            />
 
         </div>
     );
