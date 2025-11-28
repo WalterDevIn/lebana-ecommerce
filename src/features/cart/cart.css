@@ -80,6 +80,17 @@ body {
   margin-top: 0.5rem;
 }
 
+.clear-all-btn{
+  width: 150px;
+  height: 36px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: .85rem;
+  cursor: pointer;
+}
+
 .actions button {
   background: none;
   border: none;

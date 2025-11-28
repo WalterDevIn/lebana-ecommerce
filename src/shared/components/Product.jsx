@@ -76,8 +76,11 @@ function Product({ product, reload }) {
       <button className={"fav-btn " + (isFavorite ? "toggled" : "")} aria-label="Agregar a favoritos" onClick={handleToggleFavorites}>❤</button>
       <img src={product.image} alt={product.name} />
       <div className="product-card-body">
-        <h4>{product.name}</h4>
-        <p>$ {product.price}</p>
+        <div className="product-name">
+          <h4>{product.name}</h4>
+          <p>{product.description}</p>
+        </div>
+        <p>$ {product.price.toLocaleString()}</p>
       </div>
       <aside className="product-actions">
         <div className="action-row">

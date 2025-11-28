@@ -78,9 +78,10 @@ function CartProduct({ product, reload }) {
       <div className="product-card-body">
         <div className="data">
           <h4>{product.name}</h4>
-          <p>$ {product.price}</p>
+          <p style={{ fontSize: 14, paddingTop: 8, fontWeight: 400}}>{product.description}</p>
+          <p style={{ fontSize: 14, paddingTop: 8, fontWeight: 400}}>Precio por unidad: $ {product.price.toLocaleString()}</p>
         </div>
-        <div className="total"><p>Total: $ {product.price * quantity}</p></div>
+        <div className="total"><p>Total: $ {(product.price * quantity).toLocaleString()}</p></div>
       </div>
       <aside className="product-actions">
         <div className="action-row">

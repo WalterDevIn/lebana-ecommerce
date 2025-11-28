@@ -13,6 +13,13 @@ function Cart() {
         calculeTotal();
     }
 
+    function clearCart() {
+        if (confirm("¿Seguro que deseas vaciar todo el carrito?")) {
+            storage.write(CART, []);
+            reload();
+        }
+    }
+
     const calculeTotal = () => cartProducts.reduce((total, { price, quantity }) => total + +price * +quantity, 0);
 
     const total = useMemo(calculeTotal, [cartProducts]);
@@ -28,8 +35,6 @@ function Cart() {
             .filter(Boolean)
         );
     }
-
-
 
     function handleEffect() {
         fetch(API_URL + "/products")
@@ -52,6 +57,9 @@ function Cart() {
     return (
         <div className="cart-wrapper">
             <div className="cart-list">
+                <button className="clear-all-btn" onClick={clearCart}>
+                    Vaciar carrito
+                </button>
                 {cartProducts.map(loadCart)}
             </div>
 
