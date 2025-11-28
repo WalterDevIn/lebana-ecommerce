@@ -7,24 +7,41 @@ function AdminProduct({ product, onUpdate, onDelete }) {
     return (
         <div className="admin-product-card">
 
-                {/* Imagen del producto */}
+            {/* Imagen del producto */}
+            {product.image ? (
                 <img
                     src={`/assets/productos/${product.image}`}
                     className="admin-product-image"
-                    alt={product.title}
+                    alt={product.name}
                 />
-                
+            ) : (
+                <div
+                    className="admin-product-image"
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "#f0f0f0",
+                        color: "#555",
+                        fontSize: "14px",
+                        fontStyle: "italic"
+                    }}
+                >
+                    Sin imagen
+                </div>
+            )}
+
             <div className="admin-separed">
                 {/* Información del producto */}
                 <div className="admin-product-card-body">
-                    <h4>{product.title}</h4>
+                    <h4>{product.name}</h4>
                     <p>Stock: {product.stock}</p>
                     {product.description && (
                         <p className="desc">
                             {
                                 product.description.length > 60
-                                ? product.description.slice(0, 60) + "..."
-                                : product.description
+                                    ? product.description.slice(0, 60) + "..."
+                                    : product.description
                             }
                         </p>
                     )}
@@ -45,7 +62,7 @@ function AdminProduct({ product, onUpdate, onDelete }) {
                         <button
                             className="admin-delete-btn"
                             aria-label="Eliminar producto"
-                            onClick={() => onDelete(product.id)}
+                            onClick={() => onDelete(product.id_product)}
                         >
                             <FaRegTrashCan size={14} />
                         </button>

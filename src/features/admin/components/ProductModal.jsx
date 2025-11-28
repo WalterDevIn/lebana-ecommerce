@@ -3,23 +3,30 @@ import { FaRegFloppyDisk } from "react-icons/fa6";
 
 import "./product-modal.css";
 
+const emptyProduct = {
+    id_product: null,
+    name: "",
+    price: 0,
+    stock: 0,
+    description: "",
+    image: ""
+};
+
 export default function ProductModal({ isOpen, onClose, onSave, initialData }) {
-    const [product, setProduct] = useState(
-    initialData || {
-        title: "",
-        price: 0,
-        stock: 0,
-        description: ""
-    }
-);
+    const [product, setProduct] = useState(emptyProduct);
 
     useEffect(() => {
-    setProduct(initialData);
-}, [initialData]);
+        setProduct({
+            id_product: initialData?.id_product ?? null,
+            name: initialData?.name ?? "",
+            price: initialData?.price ?? 0,
+            stock: initialData?.stock ?? 0,
+            description: initialData?.description ?? "",
+            image: initialData?.image ?? ""
+        });
+    }, [initialData]);
 
-
-    if (!isOpen || !product) return null;
-
+    if (!isOpen) return null;
 
     function handleChange(e) {
         setProduct({ ...product, [e.target.name]: e.target.value });
@@ -34,17 +41,17 @@ export default function ProductModal({ isOpen, onClose, onSave, initialData }) {
     return (
         <div className="modal-overlay">
             <div className="modal-container">
-                <h1>{product.id ? "Editar Producto" : "Nuevo Producto"}</h1>
-                <h2>{product.id ? "Ingresa los detalles para modificar el producto." : "Ingresa los detalles para nuevo el producto."}</h2>
+                <h1>{product.id_product ? "Editar Producto" : "Nuevo Producto"}</h1>
+                <h2>{product.id_product ? "Ingresa los detalles para modificar el producto." : "Ingresa los detalles para nuevo el producto."}</h2>
 
                 <form onSubmit={handleSubmit} className="modal-form">
                     <div className="modal-content-input">
                         <label>Nombre del Producto</label>
                         <input
                             type="text"
-                            name="title"
+                            name="name"
                             placeholder="ej. Buzo Oversize"
-                            value={product.title}
+                            value={product.name || ""}
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -57,7 +64,7 @@ export default function ProductModal({ isOpen, onClose, onSave, initialData }) {
                                 type="number"
                                 name="price"
                                 placeholder="0"
-                                value={product.price}
+                                value={product.price || ""}
                                 onChange={handleChange}
                                 className="modal-input-row modal-input"
                             />
@@ -69,7 +76,7 @@ export default function ProductModal({ isOpen, onClose, onSave, initialData }) {
                                 type="number"
                                 name="stock"
                                 placeholder="0"
-                                value={product.stock}
+                                value={product.stock || ""}
                                 onChange={handleChange}
                                 className="modal-input-row modal-input"
                             />
@@ -81,7 +88,7 @@ export default function ProductModal({ isOpen, onClose, onSave, initialData }) {
                         <label>Descripción</label>
                         <textarea
                             name="description"
-                            value={product.description}
+                            value={product.description || ""}
                             placeholder="Descripcion del producto..."
                             onChange={handleChange}
                             className="modal-input"

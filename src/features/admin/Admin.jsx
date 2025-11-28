@@ -1,112 +1,76 @@
 import React, { useState, useEffect } from "react";
-import { API_URL } from "../../services/api";
+import { products } from "../../services/api";
 
 import AdminProduct from "./components/AdminProduct";
 import Search from "./components/Search";
-import productsData from "./products/products.json";
 import ProductModal from "./components/ProductModal";
 
 import "./admin.css";
 
 export default function Admin() {
-    const [products, setProducts] = useState([]);
+    const [adminProducts, setAdminProducts] = useState([]);
     const [query, setQuery] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
 
-    // Obtener productos desde el servidor
-    /* async function fetchProducts() {
+    // Obtener productos desde el backend
+    async function fetchProducts() {
         try {
-            const res = await fetch(`${API_URL}/products`);
-            const data = await res.json();
-            setProducts(data);
+            const data = await products.getAll();
+            setAdminProducts(data);
+
         } catch (err) {
-            console.error("Error al obtener productos:", err);
+            console.error(err);
         }
-    }
-    */
-
-    // Crear un producto vacío (ej: abrir modal de creación)
-    function handleAdd() {
-        setEditingProduct({
-            id: null,
-            title: "",
-            price: 0,
-            stock: 0,
-            description: "",
-        });
-        setModalOpen(true);
-
-        // Crear POST (BD)
-        /*fetch(`${API_URL}/products`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newProduct),
-        })
-            .then(() => fetchProducts())
-            .catch(console.error);
-        */
-    }
-
-    // Actualizar producto (viene desde AdminProduct)
-    function handleUpdate(updated) {
-        /*fetch(`${API_URL}/products/${updated.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updated),
-        })
-            .then(fetchProducts)
-            .catch(console.error);
-        */
-
-        setProducts(products.map(p => p.id === updated.id ? updated : p));
-    }
-
-    // Eliminar producto
-    function handleDelete(id) {
-        /*fetch(`${API_URL}/products/${id}`, {
-            method: "DELETE"
-        })
-            .then(fetchProducts)
-            .catch(console.error);
-        */
-
-        setProducts(products.filter(p => p.id !== id));
     }
 
     useEffect(() => {
-        //BD
-        //fetchProducts();
-
-        //JSON
-        setProducts(productsData);
+        fetchProducts();
     }, []);
 
-    function openEdit(product) {
-        setEditingProduct(product);
+    // Crear o actualizar producto
+    async function saveProduct(product) {
+        const isNew = product.id_product === null;
+
+        if (product.id_product === null) {
+            await products.create(product);
+        } else {
+            await products.update(product.id_product, product);
+        }
+
+        fetchProducts();
+        setModalOpen(false);
+    }
+
+    // Eliminar producto
+    async function handleDelete(id_product) {
+        await products.delete(id_product);
+        fetchProducts();
+    }
+
+    // Abrir modal para agregar producto
+    function handleAdd() {
+        setEditingProduct({
+            id_product: null,
+            name: "",
+            price: 0,
+            stock: 0,
+            description: "",
+            image: ""
+        });
         setModalOpen(true);
     }
 
-    function saveProduct(product) {
-        // CREAR
-        if (product.id === null) {
-            const newProduct = {
-                ...product,
-                id: Date.now(),  // generar uno nuevo
-            };
-            setProducts([...products, newProduct]);
-            return;
-        }
-
-        // EDITAR
-        setProducts(products.map(p => p.id === product.id ? product : p));
+    // Abrir modal para editar producto
+    function openEdit(product) {
+        setEditingProduct(product);
+        setModalOpen(true);
     }
 
     function closeModal() {
         setModalOpen(false);
         setEditingProduct(null);
     }
-
 
     return (
         <div className="admin-wrapper">
@@ -119,12 +83,12 @@ export default function Admin() {
             </div>
 
             <div className="admin-product-list">
-                {products.map(product => (
+                {adminProducts.map(product => (
                     <AdminProduct
-                        key={product.id}
+                        key={product.id_product}
                         product={product}
                         onUpdate={() => openEdit(product)}
-                        onDelete={() => handleDelete(product.id)}
+                        onDelete={() => handleDelete(product.id_product)}
                     />
                 ))}
             </div>
