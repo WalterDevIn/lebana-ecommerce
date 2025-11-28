@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./products.css";
 
 import Filter from "./components/Filter";
-import Product from "../../shared/components/Product";
-import { products } from "../../services/api";
+import { products as productsAPI } from "../../services/api";
 import ProductsList from "./components/ProductList";
 
 function Products() {
@@ -13,23 +12,17 @@ function Products() {
 
   async function load() {
 
-    try {
-
-      setLoading(true);
-      const data = await products.getAll();
-      setProducts(data);
-
-    } catch (err) {
-
-      setError("No se pudieron cargar los productos");
-
-    } finally {
-
-      setLoading(false);
-
-    }
-    
+  try {
+    setLoading(true);
+    const data = await productsAPI.getAll();
+    setProducts(data);
+  } catch (err) {
+    setError("No se pudieron cargar los productos");
+  } finally {
+    setLoading(false);
   }
+}
+
 
   useEffect(() => {
     load();

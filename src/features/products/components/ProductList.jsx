@@ -3,7 +3,7 @@ import Product from "../../../shared/components/Product";
 
 function ProductsList({ products, loading, error, reload }) {
   const mapProduct = (product) => (
-    <Product key={product.id} product={product} reload={reload} />
+    <Product key={product.id_product} product={product} reload={reload} />
   );
 
   if (loading) 

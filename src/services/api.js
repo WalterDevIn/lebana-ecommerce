@@ -1,5 +1,4 @@
-/*
-const BASE_URI = "http://localhost:4000/api";
+export const API_URL = import.meta.env.VITE_API_URL;
 
 function setToken(token) {
   localStorage.setItem("token", token);
@@ -21,22 +20,22 @@ function authHeaders() {
 }
 
 const products = {
-
   getAll: async () => {
-    const response = await fetch(`${BASE_URI}/products`);
-
+    const response = await fetch(API_URL + "/products");
     if (!response.ok) throw new Error("Error al obtener productos");
-    return await response.json();
+    const data = await response.json();
+    
+    return data;
   },
 
   getById: async (id) => {
-    const response = await fetch(`${BASE_URI}/products/${id}`);
+    const response = await fetch(`${API_URL}/products/${id}`);
     if (!response.ok) throw new Error("Producto no encontrado");
     return await response.json();
   },
 
   create: async (product) => {
-    const response = await fetch(`${BASE_URI}/products`, {
+    const response = await fetch(`${API_URL}/products`, {
       method: "POST",
       headers: authHeaders(),
       body: JSON.stringify(product),
@@ -47,7 +46,7 @@ const products = {
   },
 
   update: async (id, product) => {
-    const response = await fetch(`${BASE_URI}/products/${id}`, {
+    const response = await fetch(`${API_URL}/products/${id}`, {
       method: "PUT",
       headers: authHeaders(),
       body: JSON.stringify(product),
@@ -58,7 +57,7 @@ const products = {
   },
 
   delete: async (id) => {
-    const response = await fetch(`${BASE_URI}/products/${id}`, {
+    const response = await fetch(`${API_URL}/products/${id}`, {
       method: "DELETE",
       headers: authHeaders(),
     });
@@ -71,7 +70,7 @@ const products = {
 const auth = {
 
   login: async (email, password) => {
-    const response = await fetch(`${BASE_URI}/auth/login`, {
+    const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -87,7 +86,7 @@ const auth = {
   },
 
   register: async (user) => {
-    const response = await fetch(`${BASE_URI}/auth/register`, {
+    const response = await fetch(`${API_URL}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -98,7 +97,7 @@ const auth = {
   },
 
   getProfile: async () => {
-    const response = await fetch(`${BASE_URI}/auth/profile`, {
+    const response = await fetch(`${API_URL}/auth/profile`, {
       headers: authHeaders(),
     });
 
@@ -113,8 +112,3 @@ const auth = {
 };
 
 export { products, auth };
-*/
-
-export const products = {};
-export const API_URL = "";
-

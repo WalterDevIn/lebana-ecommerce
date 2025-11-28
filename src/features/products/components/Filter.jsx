@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 
-function Filter() {
+function Filter({ onFilter }) {
     const [priceRange, setPriceRange] = useState([0, 9999999]);
     const [sizeFilter, setSizeFilter] = useState("");
 
-    {/*
     function handleFilter() {
-         const filtered = products.filter((p) => {
-             const precioNum = Number(String(p.precio).replace(",", "."));
-             const precioOK = precioNum >= Number(priceRange[0]) && precioNum <= Number(priceRange[1]);
-
-             // Compatibilidad: p.talle (string) o p.talles (array)
-             const talleOK =
-                 !sizeFilter ||
-                 p.talle === sizeFilter ||
-                 (Array.isArray(p.talles) && p.talles.includes(sizeFilter));
-
-             return precioOK && talleOK;
-         });
-         setFilteredProducts(filtered);
-         setCurrentPage(1);
+        // Llamás al callback que viene desde Products
+        if (typeof onFilter === "function") {
+            onFilter({
+                priceRange,
+                sizeFilter
+            });
+        }
     }
-    */}
 
     return (
         <aside className="products-sidebar">
@@ -50,7 +41,9 @@ function Filter() {
                 <option value="Único">Único</option>
             </select>
 
-            <button onClick={{/* handleFilter */}}>Aplicar Filtros</button>
+            <button onClick={handleFilter}>
+                Aplicar Filtros
+            </button>
         </aside>
     );
 }

@@ -47,9 +47,9 @@ function Product({ product, reload }) {
   return (
     <div className="product-card">
       <button className={"fav-btn " + (isFavorite ? "toggled" : "")} aria-label="Agregar a favoritos" onClick={handleToggleFavorites}>❤</button>
-      <img src={product.image} alt={product.title} />
+      <img src={product.image} alt={product.name} />
       <div className="product-card-body">
-        <h4>{product.title}</h4>
+        <h4>{product.name}</h4>
         <p>$ {product.price}</p>
       </div>
       <aside className="product-actions">
@@ -76,7 +76,6 @@ function Product({ product, reload }) {
             min="1" 
             max={product.stock}
             value={quantity}
-            defaultValue="1" 
             aria-label="Cantidad"
             onChange={handleQuantity} />
         </div>
