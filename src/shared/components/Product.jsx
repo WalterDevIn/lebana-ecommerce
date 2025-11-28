@@ -7,8 +7,8 @@ import "./product.css";
 function Product({ product, reload }) {
   const [isFavorite, setIsFavorite] = useState();
   const [quantity, setQuantity] = useState(1);
-  
-  const { id } = product; 
+
+  const { id } = product;
 
   const handleEffect = () => {
     setIsFavorite(storage.read(FAVORITES, []).includes(id));
@@ -21,9 +21,9 @@ function Product({ product, reload }) {
     const exist = favorites.includes(id);
 
     storage.write(
-      FAVORITES, 
+      FAVORITES,
       exist
-        ? favorites.filter(i => i != id) 
+        ? favorites.filter(i => i != id)
         : [...favorites, id]
     );
 
@@ -32,14 +32,41 @@ function Product({ product, reload }) {
   }
 
   function handleAddToCart() {
-    const 
-      cart = storage.read(CART, []), 
-      index = cart.findIndex(item => item.id == id),
-      exist = index != -1,
-      currentQuantity = (exist? cart[index].quantity : 0) + quantity,
-      item = { id, quantity: currentQuantity};
+    console.log("PRODUCT RECIBIDO:", product);
 
-    currentQuantity > product.stock || storage.write(CART, exist? cart.with(index, item): [...cart, item]);
+    if (quantity <= 0) {
+      alert("Debes agregar al menos 1 unidad");
+      return;
+    }
+    const
+      cart = storage.read(CART, []),
+      productId = product.id_product,
+      index = cart.findIndex(item => item.id === productId),
+      exist = index != -1,
+      currentQuantity = (exist ? cart[index].quantity : 0) + quantity,
+      item = {
+        id: productId,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: currentQuantity,
+        stock: product.stock
+      };
+
+    if (currentQuantity <= product.stock) {
+      if (exist) {
+        cart[index] = item; // actualizar cantidad
+      } else {
+        cart.push(item); // agregar al carrito
+      }
+
+      storage.write(CART, cart);
+      const test = storage.read(CART, []);
+      console.log("CARRITO DESPUÉS DE GUARDAR:", test);
+      alert(`${product.name} se agregó al carrito!`);
+    } else {
+      alert(`No se puede agregar más de ${product.stock} unidades de ${product.name}`);
+    }
   }
 
   const handleQuantity = ({ target: { value } }) => +value > product.stock || setQuantity(+value);
@@ -70,10 +97,10 @@ function Product({ product, reload }) {
             <option>XL</option>
           </select> */}
 
-          <input 
+          <input
             className="qty-input"
-            type="number" 
-            min="1" 
+            type="number"
+            min="1"
             max={product.stock}
             value={quantity}
             aria-label="Cantidad"

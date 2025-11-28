@@ -1,25 +1,32 @@
 import React, { useState, useEffect, useMemo } from "react";
 import CartProduct from "./components/CartProduct";
 import { storage, CART } from "../../shared/utils/storage";
-import { API_URL } from "../../services/api"; 
+import { API_URL } from "../../services/api";
 
 import "./cart.css";
 
 function Cart() {
-    const [products, setProducts] = useState([]);
+    const [cartProducts, setCartProducts] = useState([]);
 
     const reload = () => {
-        handleCart(products);
+        handleCart(cartProducts);
         calculeTotal();
     }
 
-    const calculeTotal = () => products.reduce((total, { price, quantity }) => total + +price * +quantity, 0);
+    const calculeTotal = () => cartProducts.reduce((total, { price, quantity }) => total + +price * +quantity, 0);
 
-    const total = useMemo(calculeTotal, [products]);
+    const total = useMemo(calculeTotal, [cartProducts]);
 
     function handleCart(data) {
         const cart = storage.read(CART, []);
-        setProducts(cart.map(({ id: index, quantity }) => ({...data.find(({id}) => index == id), quantity})));
+        setCartProducts(cart
+            .map(({ id: index, quantity }) => {
+                const prodData = data.find(prod => prod.id_product == index);
+                return prodData ? { ...prodData, quantity } : null;
+            })
+
+            .filter(Boolean)
+        );
     }
 
 
@@ -33,24 +40,24 @@ function Cart() {
 
     useEffect(handleEffect, []);
 
-    const loadCart = item => <CartProduct 
-        key={item.id} 
-        product={item} 
+    const loadCart = item => <CartProduct
+        key={item.id_product}
+        product={item}
         reload={reload}
     />
 
-    if (products.length === 0) 
+    if (cartProducts.length === 0)
         return <div className="cart-empty">Tu carrito está vacío.</div>;
 
     return (
         <div className="cart-wrapper">
             <div className="cart-list">
-                {products.map(loadCart)}
+                {cartProducts.map(loadCart)}
             </div>
 
             <div className="cart-summary">
                 <h3>Resumen de compra</h3>
-                <p>Productos ({products.length})</p>
+                <p>Productos ({cartProducts.length})</p>
                 <p>Envío: <span className="envio-gratis">Gratis</span></p>
                 <p className="total">Total: ${total.toLocaleString()}</p>
                 <button className="confirm-button">
