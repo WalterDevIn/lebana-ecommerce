@@ -79,12 +79,9 @@
 
 /* TARJETA DE PRODUCTO */
 
-/* contenedor grande centrado ya lo tenés; añadimos resposive */
-
-
 .products-wrapper{
-  padding: 24px 32px;       /* ↑ más aire a ambos lados */
-  max-width: 1200px;        /* ↓ contenedor más estrecho y centrado */
+  padding: 24px 32px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -97,7 +94,6 @@
 .product-name {
   font-size: 1rem;
   margin-bottom: .3rem;
-  word-wrap: break-word;
 }
 
 .product-price {
