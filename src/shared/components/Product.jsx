@@ -32,7 +32,6 @@ function Product({ product, reload }) {
   }
 
   function handleAddToCart() {
-    console.log("PRODUCT RECIBIDO:", product);
 
     if (quantity <= 0) {
       alert("Debes agregar al menos 1 unidad");
@@ -62,7 +61,6 @@ function Product({ product, reload }) {
 
       storage.write(CART, cart);
       const test = storage.read(CART, []);
-      console.log("CARRITO DESPUÉS DE GUARDAR:", test);
       alert(`${product.name} se agregó al carrito!`);
     } else {
       alert(`No se puede agregar más de ${product.stock} unidades de ${product.name}`);
@@ -74,7 +72,42 @@ function Product({ product, reload }) {
   return (
     <div className="product-card">
       <button className={"fav-btn " + (isFavorite ? "toggled" : "")} aria-label="Agregar a favoritos" onClick={handleToggleFavorites}>❤</button>
-      <img src={product.image} alt={product.name} />
+      {/* Imagen del producto */}
+      {product.image ? (
+        <img
+          src={`/lebana-ecommerce/productosImages/${product.image}`}
+          className="admin-product-image"
+          alt={product.name}
+          style={{
+            display: "block",
+            width: 180,
+            height: 170,
+            objectFit: "cover",
+            background: "transparent",
+            borderRadius: 8,
+            flexShrink: 0,
+            margin:0,
+            marginLeft: 18,
+            verticalAlign: "middle",
+            border: "none",
+          }}
+        />
+      ) : (
+        <div
+          className="product-card-img"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#f0f0f0",
+            color: "#555",
+            fontSize: "14px",
+            fontStyle: "italic"
+          }}
+        >
+          Sin imagen
+        </div>
+      )}
       <div className="product-card-body">
         <div className="product-name">
           <h4>{product.name}</h4>

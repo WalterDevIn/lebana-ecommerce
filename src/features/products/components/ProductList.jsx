@@ -11,7 +11,7 @@ function ProductsList({ products, loading, error, reload }) {
   if (error) 
     return <p style={{ color: "red" }}>{error}</p>;
   if (products.length <= 0) 
-    return <p>No se encontraron productos.</p>;
+    return <p style={{ marginTop: "1rem", fontSize: "1.2rem" }} >No se encontraron productos.</p>;
 
   return <div className="products-grid">{products.map(mapProduct)}</div>;
 }

@@ -2,28 +2,17 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useRef } from "react";
 import "../home.css";
 
-import img1 from "../../../assets/productos/ropa1.webp";
-import img2 from "../../../assets/productos/ropa2.webp";
-import img3 from "../../../assets/productos/ropa3.webp";
-import img4 from "../../../assets/productos/ropa4.webp";
-import img5 from "../../../assets/productos/ropa5.webp";
-import img6 from "../../../assets/productos/ropa6.webp";
-import img7 from "../../../assets/productos/ropa7.webp";
-import img8 from "../../../assets/productos/ropa8.webp";
-import img9 from "../../../assets/productos/ropa9.webp";
-import img10 from "../../../assets/productos/ropa10.webp";
-
 const productos = [
-  { imagen: img1 },
-  { imagen: img2 },
-  { imagen: img3 },
-  { imagen: img4 },
-  { imagen: img5 },
-  { imagen: img6 },
-  { imagen: img7 },
-  { imagen: img8 },
-  { imagen: img9 },
-  { imagen: img10 }
+  { imagen: "ropa1.webp" },
+  { imagen: "ropa2.webp" },
+  { imagen: "ropa3.webp" },
+  { imagen: "ropa4.webp" },
+  { imagen: "ropa5.webp" },
+  { imagen: "ropa6.webp" },
+  { imagen: "ropa7.webp" },
+  { imagen: "ropa8.webp" },
+  { imagen: "ropa9.webp" },
+  { imagen: "ropa10.webp" }
 ];
 
 export default function ProductSlider() {
@@ -51,7 +40,7 @@ export default function ProductSlider() {
           {productos.map((producto, idx) => (
             <div className="product-card" key={idx}>
               <img
-                src={producto.imagen}
+                src={`/lebana-ecommerce/productosImages/${producto.imagen}`}
                 alt={`Producto ${idx + 1}`}
                 className="product-image"
               />

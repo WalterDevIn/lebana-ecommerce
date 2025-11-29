@@ -4,14 +4,19 @@ import { products } from "../../services/api";
 import AdminProduct from "./components/AdminProduct";
 import Search from "./components/Search";
 import ProductModal from "./components/ProductModal";
+import ConfirmModal from "./components/ConfirmModal";
 
 import "./admin.css";
 
 export default function Admin() {
     const [adminProducts, setAdminProducts] = useState([]);
     const [query, setQuery] = useState("");
+
     const [isModalOpen, setModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
+
+    const [isConfirmOpen, setConfirmOpen] = useState(false);
+    const [productToDelete, setProductToDelete] = useState(null);
 
     // Obtener productos desde el backend
     async function fetchProducts() {
@@ -43,9 +48,20 @@ export default function Admin() {
     }
 
     // Eliminar producto
-    async function handleDelete(id_product) {
-        await products.delete(id_product);
+    function handleDelete(id_product) {
+        setProductToDelete(id_product);
+        setConfirmOpen(true);
+    }
+
+    async function confirmDelete() {
+        await products.delete(productToDelete);
+        setConfirmOpen(false);
         fetchProducts();
+    }
+
+    function cancelDelete() {
+        setConfirmOpen(false);
+        setProductToDelete(null);
     }
 
     // Abrir modal para agregar producto
@@ -83,14 +99,18 @@ export default function Admin() {
             </div>
 
             <div className="admin-product-list">
-                {adminProducts.map(product => (
-                    <AdminProduct
-                        key={product.id_product}
-                        product={product}
-                        onUpdate={() => openEdit(product)}
-                        onDelete={() => handleDelete(product.id_product)}
-                    />
-                ))}
+                {adminProducts.length === 0 ? (
+                    <p style={{ marginTop: "1rem", fontSize: "1.2rem" }}>No hay productos</p>
+                ) : (
+                    adminProducts.map(product => (
+                        <AdminProduct
+                            key={product.id_product}
+                            product={product}
+                            onUpdate={() => openEdit(product)}
+                            onDelete={() => handleDelete(product.id_product)}
+                        />
+                    ))
+                )}
             </div>
 
             <ProductModal
@@ -98,6 +118,12 @@ export default function Admin() {
                 onClose={closeModal}
                 onSave={saveProduct}
                 initialData={editingProduct}
+            />
+
+            <ConfirmModal
+                isOpen={isConfirmOpen}
+                onConfirm={confirmDelete}
+                onCancel={cancelDelete}
             />
 
         </div>

@@ -74,15 +74,16 @@
   border-color: #e1e5ea;
 }
 
-.product-card img{
+.product-card-img{
   display:block;
-  width: 180px;
+  width: 180px !important;
   height:auto;
   aspect-ratio: 1 / 1;    
   object-fit: contain;
   background: transparent;
   border-radius: 8px;
   flex-shrink: 0;
+  margin-left: 18px;
   vertical-align: middle;
 }
 
@@ -98,7 +99,7 @@
   justify-content: space-between;
   height: 100%;
   gap: 8px;
-  padding: 12px 0;
+  padding: 16px 0;
   min-width: 0; /* permite elipsis */
   align-self: start;
 }
@@ -129,7 +130,7 @@
     gap: 12px;
   }
   .fav-btn:hover { transform: none; }
-  .product-card img{
+  .product-card-img{
     width: 120px;
     height: 120px;
   }

@@ -10,7 +10,7 @@ function AdminProduct({ product, onUpdate, onDelete }) {
             {/* Imagen del producto */}
             {product.image ? (
                 <img
-                    src={`/assets/productos/${product.image}`}
+                    src={`/lebana-ecommerce/productosImages/${product.image}`}
                     className="admin-product-image"
                     alt={product.name}
                 />
@@ -34,7 +34,15 @@ function AdminProduct({ product, onUpdate, onDelete }) {
             <div className="admin-separed">
                 {/* Información del producto */}
                 <div className="admin-product-card-body">
-                    <h4>{product.name}</h4>
+                    {product.description && (
+                        <h4 className="desc">
+                            {
+                                product.name.length > 42
+                                    ? product.name.slice(0, 42) + "..."
+                                    : product.name
+                            }
+                        </h4>
+                    )}
                     <p>Stock: {product.stock}</p>
                     {product.description && (
                         <p className="desc">
