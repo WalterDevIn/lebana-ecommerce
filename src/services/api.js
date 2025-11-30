@@ -69,24 +69,27 @@ const products = {
 
 const auth = {
 
-  login: async (email, password) => {
-    const response = await fetch(`${API_URL}/auth/login`, {
+  login: async (Email, Pass) => {
+    const response = await fetch(`${API_URL}/users/login`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ Email, Pass }),
     });
 
     if (!response.ok) throw new Error("Credenciales inválidas");
 
     const data = await response.json();
 
+    // El backend te devuelve user.data + token
+    // (Aunque el token también va en cookie HTTP-only)
     setToken(data.token);
 
     return data;
   },
 
   register: async (user) => {
-    const response = await fetch(`${API_URL}/auth/register`, {
+    const response = await fetch(`${API_URL}/users/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -97,7 +100,8 @@ const auth = {
   },
 
   getProfile: async () => {
-    const response = await fetch(`${API_URL}/auth/profile`, {
+    const response = await fetch(`${API_URL}/users/account`, {
+      credentials: "include", // necesario para enviar la cookie
       headers: authHeaders(),
     });
 
@@ -106,7 +110,11 @@ const auth = {
     return await response.json();
   },
 
-  logout: () => {
+  logout: async () => {
+    await fetch(`${API_URL}/users/logout`, {
+      credentials: "include",
+    });
+
     clearToken();
   },
 };
