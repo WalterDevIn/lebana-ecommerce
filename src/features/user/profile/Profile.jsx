@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../../services/api";
-import "./Profile.css";
+import "./profile.css";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
