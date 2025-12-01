@@ -34,7 +34,7 @@ function AdminProduct({ product, onUpdate, onDelete }) {
             <div className="admin-separed">
                 {/* Información del producto */}
                 <div className="admin-product-card-body">
-                    {product.description && (
+                    {product.name && (
                         <h4 className="desc">
                             {
                                 product.name.length > 42

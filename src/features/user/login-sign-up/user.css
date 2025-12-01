@@ -14,7 +14,7 @@
 .user-left {
   flex: 1;
   width: 40%;
-  background: url("/lebana-ecommerce/assets/productos/fondo-inicio-sesion.png");
+  background: url("/lebana-ecommerce/productosImages/fondo-inicio-sesion.png");
   background-size: 100% auto; 
   background-repeat: no-repeat; 
   background-position: center; 
@@ -135,7 +135,7 @@
   .user-container {
     flex-direction: column;
     position: relative;
-    background: url("/lebana-ecommerce/assets/productos/fondo-inicio-sesion.png");
+    background: url("/lebana-ecommerce/productosImages/fondo-inicio-sesion.png");
     background-size: 100% auto; 
     background-repeat: no-repeat; 
     background-position: start; 

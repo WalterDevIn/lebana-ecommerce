@@ -113,7 +113,15 @@ function CartProduct({ product, reload }) {
       <div className="product-card-body">
         <div className="data">
           <h4>{product.name}</h4>
-          <p style={{ fontSize: 14, paddingTop: 8, fontWeight: 400}}>{product.description}</p>
+          {product.description && (
+            <p style={{ fontSize: 14, paddingTop: 8, fontWeight: 400 }}>
+              {
+                product.description.length > 100
+                  ? product.description.slice(0, 100) + "..."
+                  : product.description
+              }
+            </p>
+          )}
           <p style={{ fontSize: 14, paddingTop: 8, fontWeight: 400}}>Precio por unidad: $ {product.price.toLocaleString()}</p>
         </div>
         <div className="total"><p>Total: $ {(product.price * quantity).toLocaleString()}</p></div>
