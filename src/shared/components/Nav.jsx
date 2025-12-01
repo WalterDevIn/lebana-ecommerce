@@ -12,7 +12,7 @@ export default function Nav({ user }) {
   const close = () => setOpen(false);
 
   const isAuth = Boolean(user);
-  const isAdmin = user?.role === "admin";
+  const isAdmin = user?.Type_user === 1;
 
   return (
     <header className="nav-container">
@@ -62,7 +62,7 @@ export default function Nav({ user }) {
           {/* BOTÓN ADMIN (solo admin) */}
           {isAdmin && (
             <Link to="/admin" className="nav-icon" title="Panel Admin">
-              <FaShieldAlt size={20} />
+              <FaShieldAlt size={18} />
             </Link>
           )}
 
@@ -73,7 +73,7 @@ export default function Nav({ user }) {
             </Link>
           ) : (
             <Link to="/profile">
-              <FaUserCircle className="nav-icon" aria-label="Perfil" size={22} />
+              <FaUserCircle className="nav-icon" aria-label="Perfil" size={18} />
             </Link>
           )}
 
@@ -84,4 +84,4 @@ export default function Nav({ user }) {
       <NavMobile open={open} close={close} user={user} />
     </header>
   );
-};.
+};

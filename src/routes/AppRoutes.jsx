@@ -32,6 +32,7 @@ function AppContent() {
       try {
         const profile = await auth.getProfile();
         setUser(profile.data || profile);
+        console.log(profile);
       } catch (err) {
         setUser(null);
       }
@@ -39,10 +40,9 @@ function AppContent() {
       setLoaded(true);
     };
 
+
     loadUser();
   }, []);
-
-  if (!isLoaded) return <div>Cargando...</div>;
 
   const isAuth = Boolean(user);
 
@@ -73,7 +73,7 @@ function AppContent() {
         <Route
           path="/admin"
           element={
-            <PrivateRoute isAuth={isAuth} user={user} roles={["admin"]}>
+            <PrivateRoute isAuth={isAuth} user={user} roles={[1]}>
               <Admin />
             </PrivateRoute>
           }
