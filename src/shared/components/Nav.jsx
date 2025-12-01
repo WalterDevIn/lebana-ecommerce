@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { FaSearch, FaUser, FaBars, FaTimes, FaStar } from "react-icons/fa";
+import { FaHeart, FaUserCircle, FaShieldAlt } from "react-icons/fa";
 import CartIcon from "./botones-nav-bar/cart-icon";
 import { Link } from "react-router-dom";
 import "./nav.css";
-import { FaClover, FaHeart, FaHeartCircleCheck } from "react-icons/fa6";
 import NavMobile from "./nav/NavMobile";
 
-export default function Nav() {
+export default function Nav({ user }) {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(v => !v);
   const close = () => setOpen(false);
+
+  const isAuth = Boolean(user);
+  const isAdmin = user?.role === "admin";
 
   return (
     <header className="nav-container">
@@ -41,7 +44,7 @@ export default function Nav() {
           </nav>
         </div>
 
-        {/* Centro: Links informativos (se ocultan antes que las categorías) */}
+        {/* Centro */}
         <nav className="nav-center">
           <Link to="/guia-de-talles">Guía de talles</Link>
           <Link to="/blog">Blog</Link>
@@ -49,14 +52,36 @@ export default function Nav() {
 
         {/* Derecha: íconos */}
         <div className="nav-right">
-          <Link to="/favoritos" onClick={close}><FaHeart size={18} /></Link>
+
+          <Link to="/favoritos" onClick={close}>
+            <FaHeart size={18} />
+          </Link>
+
           <FaSearch className="nav-icon" aria-label="Buscar" />
-          <Link to="/user"><FaUser className="nav-icon" aria-label="Cuenta" /></Link>
+
+          {/* BOTÓN ADMIN (solo admin) */}
+          {isAdmin && (
+            <Link to="/admin" className="nav-icon" title="Panel Admin">
+              <FaShieldAlt size={20} />
+            </Link>
+          )}
+
+          {/* PERFIL / LOGIN DEPENDIENDO DE isAuth */}
+          {!isAuth ? (
+            <Link to="/user">
+              <FaUser className="nav-icon" aria-label="Cuenta" />
+            </Link>
+          ) : (
+            <Link to="/profile">
+              <FaUserCircle className="nav-icon" aria-label="Perfil" size={22} />
+            </Link>
+          )}
+
           <CartIcon />
         </div>
       </div>
 
-      <NavMobile open={open} close={close}/>
+      <NavMobile open={open} close={close} user={user} />
     </header>
   );
-}
+};.
