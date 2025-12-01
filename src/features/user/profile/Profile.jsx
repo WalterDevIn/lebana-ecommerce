@@ -90,6 +90,11 @@ function Profile() {
 
   if (loading) return <p style={{ padding: 20 }}>Cargando perfil...</p>;
 
+  function logout() {
+    auth.logout();
+    window.location.href = "/";
+  }
+
   return (
     <div className="profile-container">
       {/* SIDEBAR */}
@@ -110,7 +115,7 @@ function Profile() {
         <h2 className="profile-name">{form.Name}</h2>
         <p className="profile-email">{form.Email}</p>
 
-        <button className="profile-logout-btn" onClick={auth.logout}>
+        <button className="profile-logout-btn" onClick={logout}>
           Cerrar sesión
         </button>
       </aside>
