@@ -54,7 +54,14 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Products />} />
 
-        <Route path="/user" element={<User onLogin={setUser} />} />
+        <Route
+          path="/user"
+          element={
+            <PublicOnlyRoute isAuth={isAuth}>
+              <User onLogin={setUser} />
+            </PublicOnlyRoute>
+          }
+        />
 
         <Route path="/cart" element={<Cart />} />
         <Route path="/favoritos" element={<Favorites />} />
