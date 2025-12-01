@@ -14,6 +14,7 @@ import Admin from "../features/admin/Admin";
 
 // Private route
 import PrivateRoute from "./PrivateRoute";
+import PublicOnlyRoute from "./PublicOnlyRoute";
 
 // API connector
 import { auth } from "../services/api";
@@ -80,7 +81,7 @@ function AppContent() {
         <Route
           path="/admin"
           element={
-            <PrivateRoute isAuth={isAuth} user={user} roles={[1]}>
+            <PrivateRoute isAuth={isAuth} user={user} roles={[0]}>
               <Admin />
             </PrivateRoute>
           }

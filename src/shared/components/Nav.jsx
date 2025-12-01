@@ -12,7 +12,7 @@ export default function Nav({ user }) {
   const close = () => setOpen(false);
 
   const isAuth = Boolean(user);
-  const isAdmin = user?.Type_user === 1;
+  const isAdmin = user?.Type_user === 0;
 
   return (
     <header className="nav-container">
